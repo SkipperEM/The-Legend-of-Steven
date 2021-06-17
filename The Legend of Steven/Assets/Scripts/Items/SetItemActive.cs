@@ -6,6 +6,7 @@ public class SetItemActive : MonoBehaviour
 {
     public void ToggleVis(bool active)
     {
-        gameObject.SetActive(active);
+        gameObject.GetComponent<SpriteRenderer>().enabled = active;
+        gameObject.GetComponent<BoxCollider2D>().enabled = active;
     }
 }

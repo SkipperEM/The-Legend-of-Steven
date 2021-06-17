@@ -103,6 +103,7 @@ MonoBehaviour:
   moveSpeed: 4500
   inventorySize: 5
   currentItem: -1
+  previousItem: 0
   items: []
   inventorySlots:
   - {fileID: 0}

@@ -7,6 +7,7 @@ public abstract class SwordBase : ItemBase
 {
     public abstract override void Use();
     public abstract override void AltUse();
+    public abstract override void CheckActive();
 
     // VARS
     public Player player;

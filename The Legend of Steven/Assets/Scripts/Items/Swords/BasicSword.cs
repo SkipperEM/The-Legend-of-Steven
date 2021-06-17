@@ -13,7 +13,7 @@ public class BasicSword : SwordBase, IEquippable
 
     public override void Use()
     {
-
+        StartCoroutine(Attack());
     }
 
     public override void AltUse()
@@ -21,10 +21,30 @@ public class BasicSword : SwordBase, IEquippable
 
     }
 
+    public override void CheckActive()
+    {
+        if (isActive)
+        {
+            player.animator.SetBool("basic", true);
+        }
+        else
+        {
+            player.animator.SetBool("basic", false);
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        player.animator.SetBool("attacking", true);
+        yield return new WaitForSeconds(0.1f);
+        player.animator.SetBool("attacking", false);
+    }
+
     public void EquipItem()
     {
+        transform.SetParent(player.transform);
+        transform.position = transform.parent.position;
         player.Equip(gameObject, image);
-        //player.items.Add(gameObject);
         isEquipped = true;
     }
 

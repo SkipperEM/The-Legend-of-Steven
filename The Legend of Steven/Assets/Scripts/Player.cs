@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 5000f;
     public int inventorySize = 5;
     [SerializeField] int currentItem = -1;
+    [SerializeField] int previousItem;
     public List<GameObject> items;
     public InventorySlot[] inventorySlots;
     public GameObject currentActiveItem;
@@ -23,13 +24,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (previousItem != currentItem)
+        {
+            SelectItem();
+        }
+        previousItem = currentItem;
+        ProcessInput();
         MovePlayer();
         
     }
 
     void ProcessInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && currentActiveItem != null)
         {
             currentActiveItem.GetComponent<ItemBase>().Use();
         }
@@ -119,10 +126,28 @@ public class Player : MonoBehaviour
         }
     }
 
+    void SelectItem()
+    {
+        int inventoryIndex = 0;
+
+        foreach(GameObject item in items)
+        {
+            if (currentItem == inventoryIndex)
+            {
+                //inventorySlots[inventoryIndex].GetComponent<Image>().color.;
+                currentActiveItem = item;
+                item.GetComponent<ItemBase>().isActive = true;
+                item.GetComponent<ItemBase>().CheckActive();
+                break;
+            }
+            inventoryIndex++;
+        }
+    }
+
     public void Equip(GameObject item, Image image)
     {
         items.Add(item);
-        //int inventoryIndex;
+        
         foreach(InventorySlot slot in inventorySlots)
         {
             if (slot.isTaken == false)

@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571cde9694a19734391ab927fcf277b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   player: {fileID: 0}
   image: {fileID: 834044748}
   isEquipped: 0
@@ -754,10 +755,6 @@ PrefabInstance:
     - target: {fileID: 1733348766432947400, guid: 057c4233c76bc6e42997fb677b741a83, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1733348766432947402, guid: 057c4233c76bc6e42997fb677b741a83, type: 3}
-      propertyPath: inventorySlots.Array.size
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1733348766432947402, guid: 057c4233c76bc6e42997fb677b741a83, type: 3}
       propertyPath: inventorySlots.Array.data[0]
