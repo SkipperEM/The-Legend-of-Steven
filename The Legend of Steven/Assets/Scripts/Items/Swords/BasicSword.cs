@@ -13,17 +13,18 @@ public class BasicSword : SwordBase, IEquippable
 
     public override void Use()
     {
-        
+
     }
 
     public override void AltUse()
     {
-        
+
     }
 
     public void EquipItem()
     {
-        player.items.Add(gameObject);
+        player.Equip(gameObject, image);
+        //player.items.Add(gameObject);
         isEquipped = true;
     }
 
@@ -44,4 +45,6 @@ public class BasicSword : SwordBase, IEquippable
             }
         }
     }
+
+    
 }
